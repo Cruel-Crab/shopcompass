@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 px-4 py-8">
       <h1 className="text-3xl font-bold text-purple-600 mb-6 text-center">
-        Quick Commerce Product Search
+        ShopCompass 🔎 (A Quick Commerce Product Search)
       </h1>
       <p>Start typing to search for a product across apps!</p>
 
