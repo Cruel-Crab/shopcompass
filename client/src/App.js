@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./App.css";
 import SearchBar from "./SearchBar";
 import ProductResults from "./ProductResults";
-import { fetchProducts } from "./api/fetchProducts";
 
 function App() {
   const [ products, setProducts ] = useState( [] );
@@ -16,10 +15,11 @@ function App() {
     setSearched( true ); // 👈 set searched to true when user searches
 
     try {
-      const results = await fetchProducts( query );
-      setProducts( results );
+      const response = await fetch( `/api/search?query=${encodeURIComponent( query )}` );
+      const data = await response.json();
+      setProducts( data );
     } catch ( error ) {
-      console.error( "Error fetching products:", error );
+      console.error( 'Search error:', error );
       setProducts( [] ); // 👈 clear products on error
     } finally {
       setLoading( false ); // 👈 set loading to false after fetching
